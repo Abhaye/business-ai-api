@@ -1,0 +1,61 @@
+[
+  {
+    "title": "First persistent update",
+    "details": "Testing saving to file",
+    "priority": "high",
+    "received_at": "2026-02-25T19:16:27.578753"
+  },
+  {
+    "title": "Persistent test update",
+    "details": "Checking if this is saved after restart",
+    "priority": "medium",
+    "received_at": "2026-02-25T19:18:19.813940"
+  },
+  {
+    "title": "Persistent test update",
+    "details": "Checking if this is saved after restart",
+    "priority": "medium",
+    "received_at": "2026-02-25T19:18:23.271811"
+  },
+  {
+    "title": "Test update",
+    "details": "Testing for Stefan",
+    "priority": "high",
+    "received_at": "2026-02-25T19:39:27.585680"
+  },
+  {
+    "title": "Test update",
+    "details": "Testing for Stefan",
+    "priority": "high",
+    "received_at": "2026-02-25T19:39:29.172395"
+  },
+  {
+    "title": "Persistent test update",
+    "details": "trying for Stefan",
+    "priority": "medium",
+    "received_at": "2026-02-25T19:58:12.648169"
+  },
+  {
+    "title": "Persistent test update",
+    "details": "trying for Stefan",
+    "priority": "medium",
+    "received_at": "2026-02-25T19:58:14.515791"
+  },
+  {
+    "additionalProp1": "test",
+    "received_at": "2026-02-25T20:00:05.880992"
+  },
+  {
+    "Author": "Stefan",
+    "Code": "T2RkaXNoYQ==",
+    "received_at": "2026-02-25T20:16:25.254867"
+  },
+  {
+    "message": "Swagger test message",
+    "received_at": "2026-02-26T20:16:06.049496"
+  },
+  {
+    "additionalProp1": {},
+    "received_at": "2026-03-08T22:06:44.700255"
+  }
+]
