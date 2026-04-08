@@ -1,35 +1,28 @@
 from fastapi import FastAPI
-from datetime import datetime
-import json
-import os
+import sqlite3
 
 app = FastAPI()
 
-# File to store updates
-DATA_FILE = "updates.json"
-
-# Load existing updates if the file exists
-if os.path.exists(DATA_FILE):
-    with open(DATA_FILE, "r") as f:
-        try:
-            updates = json.load(f)
-        except json.JSONDecodeError:
-            updates = []
-else:
-    updates = []
-
-# Save updates to file
-def save_updates():
-    with open(DATA_FILE, "w") as f:
-        json.dump(updates, f, indent=2)
+# Create DB + table
+conn = sqlite3.connect("updates.db", check_same_thread=False)
+cursor = conn.cursor()
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS updates (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message TEXT
+)
+""")
+conn.commit()
 
 @app.post("/update")
-def receive_update(update: dict):
-    update["received_at"] = datetime.utcnow().isoformat()
-    updates.append(update)
-    save_updates()
-    return {"status": "received", "total_updates": len(updates)}
+def receive_update(data: dict):
+    message = str(data.get("message"))
+    cursor.execute("INSERT INTO updates (message) VALUES (?)", (message,))
+    conn.commit()
+    return {"status": "received"}
 
 @app.get("/updates")
 def get_updates():
-    return updates
+    cursor.execute("SELECT * FROM updates")
+    rows = cursor.fetchall()
+    return [{"id": r[0], "message": r[1]} for r in rows]
